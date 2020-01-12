@@ -1,0 +1,66 @@
+import java.awt.*;
+import javax.swing.*;
+ // instance variables - replace the example below with your own
+    // Lab04v110.java
+// Student version of the Lab04 assignment.
+//import java.awt.*;
+import java.applet.*;
+public class Lab04100avst extends Applet
+{
+   public void paint(Graphics g)
+   {
+      this.setSize(1000, 800);
+      int width = 980;
+      int height = 630;
+      g.drawRect(10,10,width,height);
+      // Draw bottom-left corner
+      int x = 10;
+      int y = 10;
+      // Variables for bottom left
+      x= 10;
+      int x1 = 640;
+      int y1 = 10;
+      y = 10;
+      int xIncrement = (980/ 50);
+      int yIncrement = (630/50);
+      for (int a = 0; a <= 51; a++)
+      {
+         g.drawLine(x, x1, y1, y);
+         x = x + xIncrement;
+         y = y + yIncrement;
+      } 
+      // Draw bottom-right corner
+      x = 990;
+      y = 10;
+      y1 = 990;
+      for (int b = 0; b <= 51; b++)
+      {
+         g.drawLine(x, x1, y1, y);
+         x = x - xIncrement;
+         y = y + yIncrement;
+      }
+      // Draw top-right corner
+      x = 10;
+      y = 10;
+      x1 = 10;
+      y1 = 990;
+      for (int c = 0; c <= 50; c++)
+      {
+         g.drawLine(x, x1, y1, y);
+         x = x + xIncrement;
+         y = y + yIncrement;
+      }
+      // Draw top-left corner
+      x = 990;
+      y = 10;
+      x1= 10 ;
+      y1 = 10;
+      for (int d = 0; d <= 50; d++)
+      {
+          g.drawLine(x, x1, y1, y);
+          x = x - xIncrement;
+          y = y + yIncrement;
+      }
+
+}
+}
