@@ -1,0 +1,102 @@
+//This code can reduce fractions!
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Lab05a1vst.java
+// The Rational Class Program I
+// This is the student starting Version of the Lab05a1 assignment.
+//import java.util.Scanner;
+import java.util.Scanner;
+public class Lab05a1vst
+{
+   public static void main (String[] args)
+   {
+      System.out.print("\nEnter the numerator ----> ");
+      int num = Keyboard.getInt();
+      System.out.print("\nEnter the denominator ----> ");
+      int den = Keyboard.getInt();
+      Rational r = new Rational(num,den);
+      r.displayData();
+   }
+}
+   
+class Rational
+{
+   private int num;
+   private int den;
+   // Complete for 80-Points
+   public Rational(int itnum, int itden)
+   {
+  num = itnum;
+  den = itden;
+   }
+   // Complete for 80-Points
+   public double getDecimal()
+   {
+   return (double) num / (double) den;
+   }
+   // Complete for 80-Points
+   public String getRational()
+   {
+   return num + "/" + den;
+   }
+   // Complete for 100-Points
+   public String getReduced()
+   {
+   int gcf= getGCF(num,den);
+   return (num/gcf)+ "/" +(den/gcf);
+   }
+   // Method for 80-Points; Change for 100-Points
+   public void displayData()
+   {
+      System.out.println();
+      System.out.println(getRational() + " equals " + getDecimal());
+      System.out.println();
+      System.out.println("and reduces to " + getReduced());
+      System.out.println();
+   }
+   // Complete for 100-Points
+   private int getGCF(int n1,int n2)
+   {
+    int rem = 1;
+    int gcf = 1;
+    while (rem != 0)
+    {
+    rem = n1 % n2;
+    if (rem == 0)
+    {
+    gcf = n2;
+    }
+    else
+    {
+    n1 = n2;
+    n2 = rem;
+    }
+    }
+  
+   return gcf;
+   }
+   }
+// Library of keyboard input methods.
+// Place library in same folder as the program that uses the methods.
+class Keyboard
+{
+   public static int getInt()
+   {
+      Scanner input = new Scanner(System.in);
+      int intVal = input.nextInt();
+      return intVal;
+   }
+     
+   public static double getDouble()
+   {
+      Scanner input = new Scanner(System.in);
+      double doubleVal = input.nextDouble();
+      return doubleVal;
+   }
+  
+   public static String getString()
+   {
+      Scanner input = new Scanner(System.in);
+      String stringVal = input.nextLine();
+      return stringVal;
+   }
+}
