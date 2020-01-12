@@ -1,0 +1,95 @@
+This gets the speeding ticket you will recieve based off some following actions. 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Lab03vst.java
+// The Speeding Ticket Program 
+// This the student starting file for Lab03.
+
+
+// Library of keyboard input methods.
+// Place library in same folder as the program
+// that uses the methods.
+
+
+import java.util.Scanner;
+
+class Keyboard
+{
+   public static int getInt()
+   {
+      Scanner input = new Scanner(System.in);
+      int intVal = input.nextInt();
+      return intVal;
+   }
+      
+   public static double getDouble()
+   {
+      Scanner input = new Scanner(System.in);
+      double doubleVal = input.nextDouble();
+      return doubleVal;
+   }
+   
+   public static String getString()
+   {
+      Scanner input = new Scanner(System.in);
+      String stringVal = input.nextLine();
+      return stringVal;
+   }
+}
+
+public class Lab03v100
+{
+   public static void main(String[] args)
+   {
+      System.out.println("Suzie Snodgrass & Seymour Schmittlap");
+      System.out.println("Lab03, Student Starting Version\n");
+      System.out.println("Speeding Ticket Program");
+      
+      System.out.println("Enter posted speed limit  ==>");
+      int SpeedLimit = Keyboard.getInt();
+      System.out.println("Enter actual driving speed ==>");
+      int DrivingSpeed = Keyboard.getInt();
+      System.out.println("Enter actual driving speed ==>");
+      int MilesOverLim = DrivingSpeed - SpeedLimit;
+      System.out.println("You drove " + MilesOverLim +" over the limit");
+      if(MilesOverLim > 0)
+         System.out.println("You will recieve a speeding ticket");
+      double MinimumTicket = 75.0;
+      System.out.println("The minimum ticket is $" + MinimumTicket);
+      System.out.println(" ");
+      System.out.println("Ticket so Far:" + MinimumTicket);
+      System.out.println(" ");
+      double FiveMileOverLim = 10.00; 
+      System.out.println("Any driving speed higher than 5 miles over the limit adds $" + FiveMileOverLim + " for each mile over the speed limit");
+      double TicketsoFar1 = (FiveMileOverLim * MilesOverLim)+ MinimumTicket;
+      System.out.println("Ticket so far: "+ TicketsoFar1);
+      System.out.println("");
+      System.out.println("Any driving in a school zone doubles the ticket amount.");
+      System.out.println("Did speeding happen in a school zone (enter Y or N)==>");
+      String SchoolZone = Keyboard.getString();
+      double TicketsoFar2 = TicketsoFar1 *2;
+      boolean okSchoolZone = SchoolZone.equals("Y");
+      if(okSchoolZone)
+         System.out.println("Ticket so far: "+ TicketsoFar2);
+      System.out.println("Any speeding in a work zone doubles the ticket amount.");
+      System.out.println("Did speeding happen in a work zone ==>");
+      String Workzone = Keyboard.getString();
+      double TicketsoFar3 = TicketsoFar2 *2;
+      boolean okWorkzone = Workzone.equals("Y");
+      if(okWorkzone)
+         System.out.println("Ticket so far: "+ TicketsoFar3);
+      double Worker = 10000.0;
+      System.out.println("Hitting a worker adds a $"+Worker +" to the ticket.");
+      System.out.println("Was a worker hit in a work zone ==>y");
+      String WorkerHit = Keyboard.getString();
+      double TicketsoFar4 = TicketsoFar3 + 10000.0;
+      boolean okWorkerHit = WorkerHit.equals("Y");
+      if (okWorkerHit)
+         System.out.println("Ticket so far: $" + TicketsoFar4);
+      double EightyMile = 100.00;
+      System.out.println("Driving more than 80 mph is considered reckless.");
+      System.out.println("This adds $"+EightyMile+" for every mile over 80MPH");
+      double TicketsoFar5 = TicketsoFar4 +(EightyMile * SpeedLimit);
+      System.out.println("Your total ticket is " + TicketsoFar5);
+      
+   }
+}
