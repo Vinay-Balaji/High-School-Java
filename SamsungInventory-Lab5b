@@ -1,0 +1,109 @@
+This is a lab which asks the user to input data about a TV!
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import java.util.*;  
+class Inventory {
+   private String manufacturer; //Primative Data Type
+   private double tvage; //Primative Data Type
+   private Screen screen; // Reference Data Type - 100 Point Version
+   
+   public Inventory() //Default Constructor that initializes attributes
+   {
+      manufacturer = "";
+      tvage = 0.0;
+      screen = new Screen("");  
+   }
+   private int year() { // Calculates the year that the TV was made in (Private Helper Method)
+      int year = (int)(2020 - tvage);
+      return year;  
+   }
+      public Inventory(String initManufacturer, double initTVAge, String company) { //Parameter Constructor
+      manufacturer = initManufacturer; // Use of init to prevent aliasing since it creates an object
+      tvage = initTVAge; // Use of init to prevent aliasing since it creates an object
+      screen = new Screen(company);
+   }
+      public void setManufacturer(String b) { // Set Method
+      manufacturer = b;  
+   }
+   public void setTVAge(double a) { // Set Method
+      tvage = a;
+   }
+   public String getManufacturer() { // Get Method
+      return manufacturer;
+   }
+   public double getTVAge() {  // Get Method
+      return tvage;
+   }
+   public String getCompany() {
+      return screen.getCompany();
+   }
+   public int getYear() {
+      int year = year();
+      return year;
+   }
+}
+public class SamsungInventory { // Testing Class
+   public static void main(String[] args) {
+      Inventory television1 = new Inventory();
+      System.out.println(television1.getManufacturer());
+      System.out.println("Welcome to "+television1.getTVAge()+ " Electonics!!!");
+      System.out.println("Please enter information about your old TV:");
+      System.out.println(television1.getCompany());
+      System.out.print("What is the TV manufacturer?(Samsung, Sony) ");
+      String ma = Keyboard.getString();
+      System.out.print("What is age of the TV? ");
+      double ag = Keyboard.getDouble();
+      System.out.print("Enter the type TV Screen:(LCD,LED,OLED)");
+      String com = Keyboard.getString();
+      System.out.println(" ");
+      System.out.println("Now here is an overview of what you entered:");
+      Inventory television2 = new Inventory(ma, ag, com); // Testing class tests additional features needed for the 100 Point Version
+      System.out.println("Manufacturer:        "+television2.getManufacturer());
+      System.out.println("Age:                 "+television2.getTVAge());
+      System.out.println("Type of Screen:      "+television2.getCompany());
+      System.out.println(" ");
+      System.out.println("Now enter the information about your new TV:");
+      System.out.print("What is the TV manufacturer?(Samsung, Sony) ");
+      String manu = Keyboard.getString();
+      System.out.print("What is age of the TV? ");
+      double tvageNum = Keyboard.getDouble();
+      television2.setManufacturer(manu);
+      television2.setTVAge(tvageNum);
+      System.out.println("Now here is an overview of what you entered:");
+      System.out.println("Manufacturing:        "+television2.getManufacturer());
+      System.out.println("Age:                  "+television2.getTVAge());
+      System.out.println("Type of Screen:       "+television2.getCompany());
+      System.out.println("Year of Creation:     "+television2.getYear());
+}
+}   
+class Screen { // Additional class used for composition requirement (A TV needs a screen)
+   private String company;
+   public Screen(String initCompany) { //Stores company 
+      company = initCompany; // Use init to prevent aliasing
+   }
+   public String getCompany() {
+      return company;
+   }
+}
+class Keyboard //This is the keyboard class but we don't count it as a class when grading the code
+{
+   public static int getInt()
+   {
+      Scanner input = new Scanner(System.in);
+      int intVal = input.nextInt();
+      return intVal;
+   }
+     
+   public static double getDouble()
+   {
+      Scanner input = new Scanner(System.in);
+      double doubleVal = input.nextDouble();
+      return doubleVal;
+   }
+  
+   public static String getString()
+   {
+      Scanner input = new Scanner(System.in);
+      String stringVal = input.nextLine();
+      return stringVal;
+   }
+}
