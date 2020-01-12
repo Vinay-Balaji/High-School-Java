@@ -1,0 +1,150 @@
+//Collects information about a car
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import java.util.*;
+public class Car
+{
+   private int weight; // Attribute that is a primative date type
+   private String model;//Attribute that is a primative date type 
+   CarEngine engine; // Reference Data type 
+   private int d;
+   
+   public Car()// default constructor that initilizes the attributes 
+   {
+      weight = 0;
+      model = new String();
+      engine = new CarEngine();
+      d = 2019;
+   }
+   
+   public Car(int weight, String model, int d, CarEngine e) // Parameter Constructor
+   {
+      this.weight = weight;
+      this.model = model;
+      this.d = d;
+      //engine = new CarEngine(e.manufacturer, e.date);
+      engine = new CarEngine("Brand: Tesla", d);
+      
+      //confirmOutput();
+      
+   }
+   public int getd()
+   {return d;}
+
+   public int getWeight() // Get Method
+   {return weight;}
+
+   public String getModel() // Get Method 
+   {return model;}
+   
+   public void setModel(String model) // Set Method 
+   {this.model = model;}
+   
+   public void setWeight(int weight) // Set Method 
+   {this.weight = weight;}
+   
+   public void setd(int d)
+   {this.d = d;}
+   
+   private double convertKilograms(int pounds)
+   {
+      return pounds*2.21;    
+   }
+   
+   private void confirmOutput() 
+   {
+      System.out.println("Check In");
+   }
+   
+   }
+
+class HelperMethods {  
+    public static String preMr(String name) {
+        System.out.println(" ");
+        return "Salesman = Mr. " + name;
+    }
+}
+
+
+class CarTest // Testing Class
+{
+ 
+   
+   public static void main (String[] args)
+   {
+      System.out.println("Welcome to the Ford Dealer Car Databse!");
+      Scanner input = new Scanner(System.in);
+      System.out.println("give weight(In Kilograms):     ");
+      int weight = input.nextInt();
+      System.out.println("  ");
+      System.out.println("give model:     ");
+      Scanner sc = new Scanner(System.in);
+      String model = sc.nextLine();
+      System.out.println("year of purchase:  ");
+      Scanner yr = new Scanner(System.in);
+
+      System.out.println("Here is an overview for your car:");
+      String name = "Chetlen";//Tests Helps method 
+      System.out.println(HelperMethods.preMr(name)); //Doesn't the test class have to test this method???
+      System.out.println("Weight: " + (weight*2.21) + " Pounds");
+      CarEngine e = new CarEngine("Manuafacturer",1999);
+      Car test = new Car(weight,model,year,e);
+      System.out.println("Age of car:  " + test.engine.getDate() + " years");
+      System.out.println(test.engine.getManufacturer() + " Manufacturer");
+   
+   }
+}
+
+
+class CarEngine // Additional Class to demonstrate composition 
+{
+   private String manufacturer;
+   private int date;
+   public CarEngine()
+   {
+      manufacturer = new String();
+      date = 0;
+   }
+
+   public CarEngine(String manufacturer, int date)
+   {
+      this.manufacturer = manufacturer; // The use of the "this" keyboard prevents aliasing issues
+      this.date = date;
+   }
+   
+   public int getDate() {return usefulDate(date);}
+   public String getManufacturer() {return manufacturer;}
+   public void setDate(int date) {this.date = date;}
+   public void setManufacturer(String manufacturer) {this.manufacturer = manufacturer;}
+   
+   private int usefulDate(int date) // Private Helper Method 
+   {
+      return Calendar.getInstance().get(Calendar.YEAR) - date;
+   }
+
+}
+
+
+
+class Keyboard
+{
+   public static int getInt()
+   {
+      Scanner input = new Scanner(System.in);
+      int intVal = input.nextInt();
+      return intVal;
+   }
+     
+   public static double getDouble()
+   {
+      Scanner input = new Scanner(System.in);
+      double doubleVal = input.nextDouble();
+      return doubleVal;
+   }
+  
+   public static String getString()
+   {
+      Scanner input = new Scanner(System.in);
+      String stringVal = input.nextLine();
+      return stringVal;
+   }
+}
