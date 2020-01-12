@@ -1,0 +1,35 @@
+//With the use of a Mortgage Equation we can get the Principal Annual Rate and the Number of Years
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Lab02bvst.java
+// The Mortgage Payment Program
+// This the student, starting version of the Lab02b assignment.
+
+
+public class Lab02bvst.java
+{
+	public static void main(String[] args)
+	{
+		System.out.println("Computer Club Mortgage Calculator");
+      System.out.println("");
+      System.out.println("");
+
+		double principal  = 250000;
+		double annualRate = 4.85;
+		double numYears   = 30;
+      
+      System.out.println("Principal:        $"+ principal);
+      System.out.println("Annual Rate:      "+ annualRate +"%");
+      System.out.println("Number of Years:  "+ numYears);
+      double MonthlyPaymentNume = ((annualRate/1200) * Math.pow(1+(annualRate/1200),(numYears*12)));
+      double MonthlyPaymentDen = Math.pow(1+annualRate/1200,numYears*12) -1;
+      double MonthlyPayment = ((MonthlyPaymentNume/MonthlyPaymentDen)*principal);
+      MonthlyPayment= Math.round(MonthlyPayment*100.0)/100.0;
+      System.out.println("Monthly Payment:  $" +MonthlyPayment);
+      double TotalPayments=(MonthlyPayment* numYears*12);
+      TotalPayments = Math.round(TotalPayments*100.0)/100.0;
+      System.out.println("Total Payments:   $"+TotalPayments);
+      double TotalInterest = (TotalPayments - principal);
+      System.out.println("Total Interest:   $"+ TotalInterest);
+		System.out.println();
+	}
+}
