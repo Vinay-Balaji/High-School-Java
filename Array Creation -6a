@@ -2,44 +2,53 @@
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  // Lab06avst.java
  // This is the student starting file of Lab06a.
- //Created by Vinay Balaji 
+ 
  public class Lab06avst
  {
  public static void main (String[] args)
  {
- System.out.println("Lab06av100 by Vinay Balaji");
+ System.out.println("Lab06av100 by Suzie Snodgrass10");
  int size = 10;
- School bhs = new School(size);//Constructor -Instnitaintg
- bhs.addData(); // Adding data
- System.out.println(bhs.toString()); //Using toString to print data
+ School bhs = new School(size);
+ bhs.addData();
+ System.out.println(bhs.toString());
  }
  }
+
+ 
  class School
  {
  private Student[] students;
  private int size;
- public School (int s) //Constructor
+
+ public School (int s)
  {
-     size = s; 
+     size = s;
  }
- public void addData()// Contains all of the data of the name age and gpa 
- {   
+
+ public void addData()// Contains all of the data of the name age and gpa
+ {
     String[] name = {"Tom","Ann","Bob","Jan","Joe","Sue","Jay","Meg","Art","Deb"};
-    int[]age = {21,34,18,45,27,19,30,38,40,35}; 
+    int[]age = {21,34,18,45,27,19,30,38,40,35};
     double[]gpa = {1.685,3.875,2.5,4.0,2.975,3.225,3.65,2.0,3.999,2.125};
-    Student[] localstudents = new Student[size]; // Creating array for each student objects
+    Student[] localstudents = new Student[size];
+    String temp = "";
     for (int i = 0; i < size; i++) {
-        Student student = new Student(name[i].toString(),age[i],gpa[i]); //Creating a new student object
-        localstudents[i] = student;// Taking the student object and assigning it to the local students array
+        Student student = new Student(name[i].toString(),age[i],gpa[i]);
+        localstudents[i] = student;
     }
-    students = localstudents; // Assigned to a private variable students so it can be accessed in toString class
+    students = localstudents;
+    //return temp;
  }
+ 
  public String toString()
  {
     String temp = "";
+    //Student[] students;
          for (int i = 0; i < size; i++) {
                temp = temp+students[i].toString();
           }
+   
     return temp;
  }
  }
@@ -69,7 +78,7 @@
 
  public String toString()
  {
- String temp = name + "" + age + " " + gpa + "\n";
+ String temp = name + " " + age + " " + gpa + "\n";
  return temp;
  }
- }
+}
