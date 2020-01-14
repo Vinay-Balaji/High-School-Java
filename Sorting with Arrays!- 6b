@@ -41,7 +41,8 @@ With the use of arrays sort students age, name, and GPA!
  School bhs = new School(size);
  bhs.addData();
  System.out.println(bhs.toString());
- bhs.bubbleSort1(); // Sorts by name (Only for 100-Point version) System.out.println(bhs);
+ bhs.bubbleSort1(); // Sorts by name (Only for 100-Point version) 
+ System.out.println(bhs);
  bhs.bubbleSort2(); // Sorts by gpa
  System.out.println(bhs);
  bhs.bubbleSort3(); // Sorts by age (Only for 100-Point version)
@@ -74,7 +75,26 @@ With the use of arrays sort students age, name, and GPA!
     students = localstudents;
  }
  // Sorts by name (For 100-Point version only )
- public void bubbleSort1() { /* To Be Completed */ }
+ public void bubbleSort1() { 
+ int p = 1;
+ boolean sorted = false;
+while (!sorted)
+{
+  sorted = true;
+     for (int q = 0; q < students.length-p; q++)
+     {
+         if (students[q].getName().compareTo(students[q+1].getName())>0)
+            {
+                 Student temp = students[q];
+                 students[q] = students[q+1];
+                 students[q+1] = temp;
+                 sorted = false;
+            }
+     }
+ p++;
+ }
+ 
+    }
  // Sorts by gpa
  public void bubbleSort2() { 
  int p = 1;
@@ -82,13 +102,13 @@ With the use of arrays sort students age, name, and GPA!
 while (!sorted)
 {
   sorted = true;
-     for (int q = 0; q < list.length-p; q++)
+     for (int q = 0; q < students.length-p; q++)
      {
-         if (list[q] > list[q+1])
+         if (students[q].getGPA() > students[q+1].getGPA())
             {
-                 int temp = list[q];
-                 list[q] = list[q+1];
-                 list[q+1] = temp;
+                 Student temp = students[q];
+                 students[q] = students[q+1];
+                 students[q+1] = temp;
                  sorted = false;
             }
      }
@@ -96,7 +116,25 @@ while (!sorted)
  }
     }
  // Sorts by age (For 100-Point version only)
- public void bubbleSort3() { /* To Be Completed */ }
+ public void bubbleSort3() { 
+     int p = 1;
+ boolean sorted = false;
+while (!sorted)
+{
+  sorted = true;
+     for (int q = 0; q < students.length-p; q++)
+     {
+         if (students[q].getAge() > students[q+1].getAge())
+            {
+                 Student temp = students[q];
+                 students[q] = students[q+1];
+                 students[q+1] = temp;
+                 sorted = false;
+            }
+     }
+ p++;
+ }
+    }
  public String toString()
  {
     String temp = "";
