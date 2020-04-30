@@ -1,0 +1,97 @@
+//This is the main 
+import java.awt.*;
+import javax.swing.*;
+
+
+public class Main extends JApplet
+{
+   public void paint (Graphics g) {
+   Frame frame = new Frame(100,100);
+   frame.drawFrame(g);
+   Mattress funky = new Mattress(Color.orange,100,100);
+   funky.drawMat(g);
+   Headboard iron = new Headboard(Color.orange,100,100);
+   iron.drawMat(g);
+}
+}
+
+//Matress Class
+
+import java.awt.*;
+import javax.swing.*;
+
+public class Mattress
+ {
+ private Color complexion; // 1st Composition
+ private int xVar;
+ private int yVar;
+ private Frame fr; //1st Composition
+
+ public Mattress(Color complexion, int xp, int yp)
+ {
+ xVar = xp;
+ yVar = yp;
+ this.complexion = complexion;
+ fr = new Frame(xVar,yVar+10);
+ }
+
+ public void drawMat(Graphics g)
+ {
+ fr.drawFrame(g);
+ g.setColor(complexion.orange);
+ g.fillRect(xVar+10,yVar,130,20);
+ }
+ }
+
+//HEADBOARD CLASS*********
+
+import java.awt.*;
+import javax.swing.*;
+
+public class Headboard extends Mattress //Inheritance
+{
+ private Color complexion;
+ private int xVar;
+ private int yVar;
+
+ public Headboard(Color complexion, int xVar, int yVar)
+ {
+ super(complexion,xVar,yVar);
+ this.xVar = xVar;
+ this.yVar = yVar;
+ }
+
+ public void drawMat(Graphics g)
+ {
+ super.drawMat(g);
+ drawHeadboard(g);
+ }
+
+ private void drawHeadboard(Graphics g)
+ {
+  g.setColor(complexion.gray);
+  g.fillRect(xVar,yVar-35,10,65);
+ }
+ }
+
+
+//FRAME CLASS******************
+
+import java.awt.*;
+import javax.swing.*;
+
+public class Frame
+{
+ private int xVar;
+ private int yVar;
+ public Frame(int x, int y)
+ {
+ xVar = x;
+ yVar = y;
+ }
+ public void drawFrame(Graphics g)
+ {
+ g.setColor(Color.gray);
+ g.fillRect(xVar,yVar,150,30);
+ }
+ }
